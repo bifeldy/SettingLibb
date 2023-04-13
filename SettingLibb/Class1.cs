@@ -27,8 +27,12 @@ namespace SettingLibb
             if (string.IsNullOrEmpty(hostKunci)) {
                 hostKunci = "localhost";
             }
-            var url = "http://" + hostKunci + "/" + pathKunci + "/GetVariabel";
-            
+            var url = "http://" + hostKunci;
+            if (!string.IsNullOrEmpty(pathKunci)) {
+                url += "/" + pathKunci;
+            }
+            url += "/GetVariabel";
+
             var request = WebRequest.Create(url);
             request.Timeout = 600000;
             request.Method = "POST";
